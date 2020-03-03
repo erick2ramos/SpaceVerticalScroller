@@ -9,6 +9,7 @@ public class GameBootstrap : MonoBehaviour
 
     IEnumerator Start()
     {
+        Application.targetFrameRate = 300;
         provider = FindObjectOfType<ManagerProvider>();
 
         if(provider == null)
