@@ -72,6 +72,17 @@ namespace BaseSystems.EventSystem
 
             return exists;
         }
+
+        public static void Trigger<EventType>(EventType newEvent) where EventType : struct 
+        {
+            if (!_listeners.TryGetValue(typeof(EventType), out List<IEventListenerBase> listeners))
+                return;
+
+            for (int i = 0; i < listeners.Count; i++)
+            {
+                (listeners[i] as IEventListener<EventType>).OnEvent(newEvent);
+            }
+        }
     }
 
     // Helpers for easy listener registration
