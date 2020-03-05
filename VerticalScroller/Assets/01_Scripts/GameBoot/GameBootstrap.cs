@@ -1,4 +1,6 @@
 ﻿using BaseSystems.Managers;
+using BaseSystems.SceneHandling;
+using GameplayLogic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +21,10 @@ public class GameBootstrap : MonoBehaviour
 
         provider.Init();
 
-        yield return null;
+        yield return new WaitForSeconds(1);
+
+        var transitionManager = ManagerProvider.Get<SceneTransitionManager>();
+        GameplaySceneModel model = new GameplaySceneModel();
+        transitionManager.LoadScene(SceneIndex.GameplayScene, model);
     }
 }

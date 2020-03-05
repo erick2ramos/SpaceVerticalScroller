@@ -8,7 +8,7 @@ namespace BaseSystems.DataPersistance
 {
     public class DataPersistanceManager : Manager
     {
-        public static PlayerData PlayerData;
+        public PlayerData PlayerData { get; private set; }
 
         BinaryFormatter _formatter;
         const string FILE_EXT = ".sdata";

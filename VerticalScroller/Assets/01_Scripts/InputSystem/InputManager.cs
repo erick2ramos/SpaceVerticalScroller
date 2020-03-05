@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using BaseSystems.Managers;
+using BaseSystems.EventSystem;
 
 namespace BaseSystems.InputSystem
 {
@@ -9,6 +10,7 @@ namespace BaseSystems.InputSystem
         Vector3 _mainMovement;
         public Vector3 MovementDirection { get { return _mainMovement; } }
         public bool FireButtonDown { get; private set; }
+        public bool PauseButtonDown { get; private set; }
 
         public override void Initialize()
         {
@@ -20,17 +22,22 @@ namespace BaseSystems.InputSystem
             float horizontalMovement = Input.GetAxis("Horizontal");
             float verticalMovement = Input.GetAxis("Vertical");
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Shoot"))
             {
                 FireButtonDown = true;
-            }
-            if (Input.GetButtonUp("Fire1"))
+            } else if (Input.GetButtonUp("Shoot"))
             {
                 FireButtonDown = false;
             }
 
+            if (Input.GetButtonDown("Pause"))
+            {
+                GenericEvent.Trigger(GenericEventType.Pause, null);
+            }
+
             _mainMovement.x = horizontalMovement;
-            _mainMovement.z = verticalMovement;
+            // Using y axis because this is a 2D Unity game
+            _mainMovement.y = verticalMovement;
         }
     }
 }
