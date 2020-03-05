@@ -15,6 +15,11 @@ namespace BaseSystems.EventSystem
     {
         static Dictionary<Type, List<IEventListenerBase>> _listeners;
 
+        static EventManager()
+        {
+            _listeners = new Dictionary<Type, List<IEventListenerBase>>();
+        }
+
         public static void AddListener<EventType>(IEventListener<EventType> listener) where EventType : struct
         {
             Type type = typeof(EventType);
