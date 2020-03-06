@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using GameplayLogic.AI;
 
 namespace GameplayLogic
 {
@@ -24,6 +25,7 @@ namespace GameplayLogic
         private CharacterAbility[] _abilities;
         private ConditionState _condition;
         private Health _health;
+        private AIBrain _brain;
 
         private void Start()
         {
@@ -35,6 +37,7 @@ namespace GameplayLogic
             _health = GetComponent<Health>();
             _condition = ConditionState.Normal;
             _abilities = GetComponents<CharacterAbility>();
+            _brain = GetComponent<AIBrain>();
 
             foreach(var ability in _abilities)
             {
@@ -42,6 +45,11 @@ namespace GameplayLogic
                 {
                     ability.Initialize();
                 }
+            }
+
+            if(_brain != null)
+            {
+                _brain.Activate();
             }
         }
 
