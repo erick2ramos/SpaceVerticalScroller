@@ -16,7 +16,7 @@ namespace BaseSystems.Generic
         public void Create()
         {
             _pool = new List<GameObject>();
-            _parent = new GameObject($"__Magazine__{GameObjectPrefab.name}");
+            _parent = new GameObject($"__Pool__{GameObjectPrefab.name}");
             for (int i = 0; i < MinAmount; i++)
             {
                 _pool.Add(Generate());

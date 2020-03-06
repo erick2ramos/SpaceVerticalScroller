@@ -189,9 +189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46931de784444c44a6c71c630859e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemiesHolder: {fileID: 0}
-  _playerHolder: {fileID: 0}
-  _bulletsHolder: {fileID: 0}
+  _enemiesHolder: {fileID: 1695205284}
+  _playerHolder: {fileID: 1571088190}
+  _bulletsHolder: {fileID: 740224083}
+  _playerReference:
+    m_AssetGUID: 7e884d81c4dfc1845aedc1ac61f6f8dc
+    m_SubObjectName: 
+  _enemyReference:
+    m_AssetGUID: bf6f2c0b5ad4b90499f56b7ba018c08b
+    m_SubObjectName: 
 --- !u!1 &1223336250
 GameObject:
   m_ObjectHideFlags: 0
