@@ -4,6 +4,7 @@ using BaseSystems.EventSystem;
 using BaseSystems.Managers;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace GameplayLogic.UI
 {
@@ -14,6 +15,7 @@ namespace GameplayLogic.UI
         [SerializeField]
         TextMeshProUGUI _currenScoreText;
         [SerializeField]
+        GameObject IconToCopy;
         Image[] _continues;
 
         GameManager _gameManager;
@@ -28,6 +30,14 @@ namespace GameplayLogic.UI
         {
             switch (eventType.EventType)
             {
+                case GenericEventType.LevelStarted:
+                    _continues = new Image[_gameManager.MaxLives];
+                    _continues[0] = IconToCopy.GetComponent<Image>();
+                    for(int i = 1; i < _gameManager.MaxLives; i++)
+                    {
+                        _continues[i] = Instantiate(IconToCopy, IconToCopy.transform.parent, false).GetComponent<Image>();
+                    }
+                    break;
                 case GenericEventType.PlayerDied:
                     // show the amount of continues left
                     for(var i = 0; i < _continues.Length; i++)

@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/GameplayScene.unity
     guid: ff8fcf097fd8431449fd2850de4c48f2
+  - enabled: 1
+    path: Assets/00_Scenes/Additive/WinScreen.unity
+    guid: 3bda7e3e9a54d6648899a6e2d9910787
+  - enabled: 1
+    path: Assets/00_Scenes/Additive/GameOverScreen.unity
+    guid: 6af79120923fb5f46b9ea84c912442a2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 34e8d5aca0a3c054990c33c5d882f909,
       type: 2}
