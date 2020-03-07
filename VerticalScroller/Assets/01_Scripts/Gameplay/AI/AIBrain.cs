@@ -62,5 +62,10 @@ namespace GameplayLogic.AI
                 }
             }
         }
+
+        public void ResetBrain()
+        {
+            TransitionToState(_states[0].StateID);
+        }
     }
 }

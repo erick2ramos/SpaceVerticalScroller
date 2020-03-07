@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5366616899393832229}
   - component: {fileID: 5424127192626228060}
   - component: {fileID: 2236302487753874666}
+  - component: {fileID: 8896073115429050167}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: Untagged
@@ -82,6 +83,9 @@ MonoBehaviour:
   - StateID: MoveBackwards
     Behaviours:
     - {fileID: 2236302487753874666}
+  - StateID: Disable
+    Behaviours:
+    - {fileID: 8896073115429050167}
 --- !u!114 &5424127192626228060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +116,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementDirection: {x: 0, y: 1}
   Speed: 5
-  TransitionToState: MoveForward
+  TransitionToState: Disable
   StateTime: 3
+--- !u!114 &8896073115429050167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147202219135615298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99d8b75bb9d1cb46a5f8769c20d70cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8147202220429108555
 GameObject:
   m_ObjectHideFlags: 0
