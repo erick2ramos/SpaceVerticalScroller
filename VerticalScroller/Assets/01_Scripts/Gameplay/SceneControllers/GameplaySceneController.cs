@@ -24,13 +24,16 @@ namespace GameplayLogic
         [SerializeField]
         private WaveSequence _waveSequence;
         private SpawnerManager _spawnerManager;
+        private GameManager _gameManager;
 
         public override IEnumerator Initialization()
         {
             _spawnerManager = ManagerProvider.Get<SpawnerManager>();
-            _spawnerManager.CreateEnemyPools();
+            _gameManager = ManagerProvider.Get<GameManager>();
 
-            // Instantiate enemy spawner
+            _spawnerManager.CreateEnemyPools();
+            _gameManager.SetupLevel(3);
+
             // Instantiate player ship
             AsyncOperationHandle<GameObject> handle = _playerReference.InstantiateAsync(_playerHolder, false);
 
@@ -47,6 +50,10 @@ namespace GameplayLogic
             {
                 case GenericEventType.LevelStarted:
                     _waveSequence.Activate();
+                    break;
+                case GenericEventType.GameOver:
+                    _waveSequence.Deactivate();
+                    // Show game over screen
                     break;
             }
         }

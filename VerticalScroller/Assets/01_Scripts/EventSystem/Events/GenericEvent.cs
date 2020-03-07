@@ -14,6 +14,7 @@ namespace BaseSystems.EventSystem
         Pause,
         RespawnStarted,
         RespawnCompleted,
+        EnemyDestroyed
     }
 
     public struct GenericEvent

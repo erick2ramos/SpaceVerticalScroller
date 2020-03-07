@@ -61,5 +61,11 @@ namespace GameplayLogic
 
             IsInvulnerable = false;
         }
+
+        [ContextMenu("Hurt")]
+        public void Hurt()
+        {
+            Damage(1);
+        }
     }
 }

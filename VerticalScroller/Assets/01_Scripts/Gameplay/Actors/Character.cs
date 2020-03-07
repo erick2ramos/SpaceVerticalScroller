@@ -35,6 +35,10 @@ namespace GameplayLogic
         public void Initialize()
         {
             _health = GetComponent<Health>();
+            if(_health != null)
+            {
+                _health.Revive();
+            }
             _condition = ConditionState.Normal;
             _abilities = GetComponents<CharacterAbility>();
             _brain = GetComponent<AIBrain>();

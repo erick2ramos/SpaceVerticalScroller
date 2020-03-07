@@ -11,21 +11,21 @@ namespace GameplayLogic
         public int CurrentLives { get; private set; }
         public int MaxLives { get; private set; }
         public int CurrentScore { get; private set; }
+        public int HighScore { get; private set; }
         public bool IsPaused { get; private set; }
 
         private float _previousTimeScale;
         private bool _isPlaying;
         private float _playthroughTime;
         private DataPersistanceManager _dataPersistance;
-
-        // Player ref
-        // Enemies ref
-
+        
         public override void Initialize()
         {
             base.Initialize();
             _previousTimeScale = Time.timeScale;
+            // Request the data persistance from the provider
             _dataPersistance = ManagerProvider.Get<DataPersistanceManager>();
+            HighScore = _dataPersistance.PlayerData.CurrentHighScore;
         }
 
         public void SetupLevel(int playerLives)
@@ -64,7 +64,6 @@ namespace GameplayLogic
                             _dataPersistance.PlayerData.CurrentHighScore,
                             CurrentScore);
                         _dataPersistance.Save();
-
 
                         // Broadcast the game over event
                         GenericEvent.Trigger(GenericEventType.GameOver, null);
