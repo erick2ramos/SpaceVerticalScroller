@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  - m_GUID: 8c220250569f9134cbcaf6acd2e5b1a8
+    m_Address: HeavyEnemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - m_GUID: bc365e62321c71948a9b7f6a2f19143b
+    m_Address: NormalEnemyT2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   - m_GUID: bf6f2c0b5ad4b90499f56b7ba018c08b
     m_Address: NormalEnemy
     m_ReadOnly: 0

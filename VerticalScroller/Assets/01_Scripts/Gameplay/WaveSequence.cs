@@ -50,8 +50,8 @@ namespace GameplayLogic
         {
             _active = false;
             _currentWave = 0;
-            _currentState = WaveSequenceState.TransitionWave;
-            _nextState = WaveSequenceState.TransitionWave;
+            _currentState = WaveSequenceState.ProcessWave;
+            _nextState = WaveSequenceState.ProcessWave;
 
             // Initializing static methods state machine
             _states = new WaveSequenceStateDelegate[(int)WaveSequenceState.Count];

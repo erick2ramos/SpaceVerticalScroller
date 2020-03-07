@@ -19,9 +19,9 @@ MonoBehaviour:
     - 3
     Delays:
     - 0
+    - 1
     - 0
-    - 0
-    EnemyToSpawn: 000000000000000000000000
+    EnemyToSpawn: 000000000100000000000000
     WaveDelay: 2
   - SpawnIds:
     - 1
@@ -37,11 +37,11 @@ MonoBehaviour:
     - 0
     - 1.5
     - 0
-    EnemyToSpawn: 000000000000000000000000000000000200000000000000
-    WaveDelay: 2
+    EnemyToSpawn: 000000000100000002000000000000000200000000000000
+    WaveDelay: 10
   - SpawnIds:
     - 2
-    - 3
+    - 0
     - 2
     - 1
     Delays:
@@ -50,4 +50,4 @@ MonoBehaviour:
     - 0
     - 0
     EnemyToSpawn: 00000000020000000000000000000000
-    WaveDelay: 2
+    WaveDelay: 10
