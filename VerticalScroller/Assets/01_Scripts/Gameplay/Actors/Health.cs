@@ -10,6 +10,7 @@ namespace GameplayLogic
         public bool IsInvulnerable { get; set; }
         public int CurrentHealth { get { return _currentHealth; } }
 
+        public Renderer CharacterRenderer;
         public int ScoreOnDeath;
 
         [SerializeField]
@@ -36,8 +37,13 @@ namespace GameplayLogic
 
             if (invulnerableTime > 0)
             {
-                SetDamageable(false);
+                SetInvulnerable(false);
                 StartCoroutine(SetDamageEnabledInTime(invulnerableTime));
+            }
+
+            if(blinkTime > 0)
+            {
+                StartCoroutine(SetBlink(blinkTime));
             }
 
             if (_currentHealth <= 0)
@@ -49,7 +55,7 @@ namespace GameplayLogic
         public void Kill()
         {
             _currentHealth = 0;
-            SetDamageable(false);
+            SetInvulnerable(false);
             gameObject.SetActive(false);
             if (_character.CharacterType == CharacterType.Player)
                 GenericEvent.Trigger(GenericEventType.PlayerDied, gameObject);
@@ -63,7 +69,7 @@ namespace GameplayLogic
             gameObject.SetActive(true);
         }
 
-        public void SetDamageable(bool isInvulnerable)
+        public void SetInvulnerable(bool isInvulnerable)
         {
             IsInvulnerable = isInvulnerable;
         }
@@ -74,6 +80,24 @@ namespace GameplayLogic
             yield return new WaitForSeconds(time);
 
             IsInvulnerable = false;
+        }
+
+        // Show when the character is invulnerable
+        public IEnumerator SetBlink(float time)
+        {
+            float _timer = 0;
+            int frames = 0;
+            while (_timer <= time)
+            {
+                if (frames % 10 == 0)
+                {
+                    CharacterRenderer.enabled = !CharacterRenderer.enabled;
+                }
+                frames++;
+                _timer += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            CharacterRenderer.enabled = true;
         }
     }
 }

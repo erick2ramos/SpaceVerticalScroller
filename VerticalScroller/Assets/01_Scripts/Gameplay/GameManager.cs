@@ -82,7 +82,7 @@ namespace GameplayLogic
                     } else
                     {
                         var player = eventType.Originator.GetComponent<Character>();
-                        StartCoroutine(RespawnPlayer(player, 3));
+                        StartCoroutine(RespawnPlayer(player, 2f));
                     }
                     break;
                 case GenericEventType.EnemyDestroyed:
@@ -118,7 +118,8 @@ namespace GameplayLogic
 
             player.RespawnAt(player.transform.position);
             var health = player.GetComponent<Health>();
-            health.SetDamageable(true);
+            health.SetInvulnerable(true);
+            StartCoroutine(health.SetBlink(2));
             yield return health.SetDamageEnabledInTime(2);
 
             GenericEvent.Trigger(GenericEventType.RespawnCompleted, player.gameObject);
