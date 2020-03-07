@@ -10,33 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Bullets
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Bullets
   m_Data:
     m_SerializedData: []
-  m_GUID: 029598a1910b6454297c3f5d7a07d62a
+  m_GUID: 7f5f2c86b43432b459567a7966e1ebfa
   m_SerializeEntries:
-  - m_GUID: 7e884d81c4dfc1845aedc1ac61f6f8dc
-    m_Address: Player
+  - m_GUID: 7d2f1fc2d06a1b6429549f457d6ed88d
+    m_Address: NormalBulletEnemy
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  - m_GUID: 8c220250569f9134cbcaf6acd2e5b1a8
-    m_Address: HeavyEnemy
+  - m_GUID: aadec0b6e3339b84583fa530ff392ce6
+    m_Address: HeavyBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  - m_GUID: bc365e62321c71948a9b7f6a2f19143b
-    m_Address: NormalEnemyT2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - m_GUID: bf6f2c0b5ad4b90499f56b7ba018c08b
-    m_Address: NormalEnemy
+  - m_GUID: e7503f6c1445bf548a34605e105aa81f
+    m_Address: NormalBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -45,5 +39,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 4064da4c4d80a4d428db4601267ce973, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9caf1c8f31256254b887a4b85dee4f39, type: 2}
-    - {fileID: 11400000, guid: c7b2be17533e86346b7fe41041a2c786, type: 2}
+    - {fileID: 11400000, guid: 897fc16aa82a0ac498d058a03db9de8f, type: 2}
+    - {fileID: 11400000, guid: 43a00f1baf872aa48a9958e0bb4aebc3, type: 2}

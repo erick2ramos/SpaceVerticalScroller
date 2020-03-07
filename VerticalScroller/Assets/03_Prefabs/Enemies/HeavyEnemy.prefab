@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5366616899393832229}
   - component: {fileID: 5424127192626228060}
   - component: {fileID: 6323054414182449722}
-  - component: {fileID: 8896073115429050167}
+  - component: {fileID: 7474276066936308112}
+  - component: {fileID: 8339547225859759567}
   - component: {fileID: 5131083395528240186}
   m_Layer: 8
   m_Name: HeavyEnemy
@@ -96,12 +97,12 @@ MonoBehaviour:
   - StateID: MoveForward
     Behaviours:
     - {fileID: 5424127192626228060}
-  - StateID: DoNothing
+  - StateID: OscilateAndShoot
     Behaviours:
-    - {fileID: 6323054414182449722}
-  - StateID: Disable
+    - {fileID: 7474276066936308112}
+  - StateID: Shoot
     Behaviours:
-    - {fileID: 8896073115429050167}
+    - {fileID: 8339547225859759567}
 --- !u!114 &5424127192626228060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,8 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementDirection: {x: 0, y: -1}
   Speed: 3
-  TransitionToState: DoNothing
-  StateTime: 3
+  TransitionToState: OscilateAndShoot
+  StateTime: 2
 --- !u!114 &6323054414182449722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7056198325821246b885a4a9d7fbef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8896073115429050167
+--- !u!114 &7474276066936308112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,9 +140,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8147202219135615298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99d8b75bb9d1cb46a5f8769c20d70cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 64405e1b6444bd949a257c299ec1326c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootTimeInterval: {x: 1.5, y: 2.15}
+  TransitionToState: Shoot
+--- !u!114 &8339547225859759567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147202219135615298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f028b304b456d5d48a441f497c7b25be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletType: 2
+  TransitionToState: OscilateAndShoot
+  BulletSpeed: 4
 --- !u!61 &5131083395528240186
 BoxCollider2D:
   m_ObjectHideFlags: 0

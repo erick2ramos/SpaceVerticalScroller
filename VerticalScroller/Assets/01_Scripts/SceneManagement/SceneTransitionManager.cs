@@ -121,15 +121,14 @@ namespace BaseSystems.SceneHandling
 
             if (loadedScene.isLoaded)
             {
-                SceneManager.MergeScenes(loadedScene, SceneManager.GetActiveScene());
-
-                bool controllerFound = false;
                 // Get the scene object to initialize the scene using the ISceneController interface
                 GameObject[] rootObjects = loadedScene.GetRootGameObjects();
+
+                bool controllerFound = false;
                 foreach (GameObject rootObject in rootObjects)
                 {
                     // Try to get the scene controller so we can initialize the scene
-                    SceneController<SceneModel> sceneController = rootObject.GetComponent<SceneController<SceneModel>>();
+                    ISceneController sceneController = rootObject.GetComponent<ISceneController>();
 
                     // This object didn't have the scene controller
                     if (sceneController == null)
@@ -154,6 +153,7 @@ namespace BaseSystems.SceneHandling
                     Debug.LogError("[SceneTransitionManager] Could not find any object with component ISceneController in scene: "
                                     + loadedScene.name);
                 }
+                SceneManager.MergeScenes(loadedScene, SceneManager.GetActiveScene());
             }
 
             OnLoadingFinished?.Invoke();

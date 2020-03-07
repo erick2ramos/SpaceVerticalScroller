@@ -3,6 +3,7 @@ using System.Collections;
 using BaseSystems.Managers;
 using BaseSystems.EventSystem;
 using BaseSystems.DataPersistance;
+using BaseSystems.SceneHandling;
 
 namespace GameplayLogic
 {
@@ -18,13 +19,19 @@ namespace GameplayLogic
         private bool _isPlaying;
         private float _playthroughTime;
         private DataPersistanceManager _dataPersistance;
-        
+        private SceneTransitionManager _transitionManager;
+        private SpawnerManager _spawnerManager;
+
         public override void Initialize()
         {
             base.Initialize();
             _previousTimeScale = Time.timeScale;
-            // Request the data persistance from the provider
+
+            // Request the providers required
             _dataPersistance = ManagerProvider.Get<DataPersistanceManager>();
+            _transitionManager = ManagerProvider.Get<SceneTransitionManager>();
+            _spawnerManager = ManagerProvider.Get<SpawnerManager>();
+
             HighScore = _dataPersistance.PlayerData.CurrentHighScore;
         }
 
@@ -38,11 +45,6 @@ namespace GameplayLogic
         {
             CurrentScore += scoreToAdd;
             ScoreUpdateEvent.Trigger(CurrentScore);
-        }
-
-        private void RespawnPlayer()
-        {
-
         }
 
         private void Update()
@@ -94,8 +96,37 @@ namespace GameplayLogic
                 case GenericEventType.LevelStarted:
                     _isPlaying = true;
                     break;
+                case GenericEventType.LevelCompleted:
                 case GenericEventType.LevelEnd:
+                    GameOverSceneModel model = new GameOverSceneModel()
+                    {
+                        CurrentScore = CurrentScore,
+                        HighScore = HighScore,
+                    };
+                    model.OnAccept += () =>
+                    {
+                        GameplaySceneModel gameplayModel = new GameplaySceneModel();
+                        _transitionManager.LoadScene(SceneIndex.GameplayScene, gameplayModel);
+                    };
+
+                    _transitionManager.AddScene(SceneIndex.WinScreen, model);
                     _isPlaying = false;
+                    break;
+                case GenericEventType.GameOver:
+                    // When game over event is triggered
+                    GameOverSceneModel gosmodel = new GameOverSceneModel()
+                    {
+                        CurrentScore = CurrentScore,
+                        HighScore = HighScore,
+                    };
+                    gosmodel.OnAccept += () =>
+                    {
+                        GameplaySceneModel gameplayModel = new GameplaySceneModel();
+                        _transitionManager.LoadScene(SceneIndex.GameplayScene, gameplayModel);
+                    };
+
+                    // Show the game over screen screen
+                    _transitionManager.AddScene(SceneIndex.GameOverScreen, gosmodel);
                     break;
             }
         }
@@ -116,7 +147,7 @@ namespace GameplayLogic
 
             yield return new WaitForSeconds(time);
 
-            player.RespawnAt(player.transform.position);
+            player.RespawnAt(_spawnerManager.GetSpawnerByID("Player"));
             var health = player.GetComponent<Health>();
             health.SetInvulnerable(true);
             StartCoroutine(health.SetBlink(2));

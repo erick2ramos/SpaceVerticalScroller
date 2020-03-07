@@ -249,6 +249,19 @@ MonoBehaviour:
     Reference:
       m_AssetGUID: 8c220250569f9134cbcaf6acd2e5b1a8
       m_SubObjectName: 
+  _bulletAssetMapper:
+  - Type: 0
+    Reference:
+      m_AssetGUID: e7503f6c1445bf548a34605e105aa81f
+      m_SubObjectName: 
+  - Type: 1
+    Reference:
+      m_AssetGUID: 7d2f1fc2d06a1b6429549f457d6ed88d
+      m_SubObjectName: 
+  - Type: 2
+    Reference:
+      m_AssetGUID: aadec0b6e3339b84583fa530ff392ce6
+      m_SubObjectName: 
 --- !u!1 &274206694
 GameObject:
   m_ObjectHideFlags: 0

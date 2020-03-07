@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using BaseSystems.Generic;
+using BaseSystems.Managers;
 
 namespace GameplayLogic
 {
     public class ShootBullets : CharacterAbility
     {
         public float ShootCooldown = 0.25f;
-        // Bullet pool
-        public DynamicObjectPool Magazine;
-
+        public BulletType BulletType;
         float _cooldownTimer = 0;
+
+        SpawnerManager _spawnerManager;
 
         public override void Initialize()
         {
             base.Initialize();
-            Magazine.Create();
+            _spawnerManager = ManagerProvider.Get<SpawnerManager>();
         }
 
         public override void EarlyProcessAbility()
@@ -39,11 +40,8 @@ namespace GameplayLogic
 
         protected virtual void Shoot()
         {
-            // Get an inactive bullet from the pool
-            GameObject bulletObj = Magazine.Get();
-
-            // Activate the bullet an shoot it
-            bulletObj.GetComponent<Bullet>().Fire(transform.position, Vector3.up, gameObject);
+            // Get an inactive bullet from the pool and shoot it
+            _spawnerManager.LendBullet(BulletType).Fire(transform.position, Vector3.up, gameObject);
         }
     }
 }

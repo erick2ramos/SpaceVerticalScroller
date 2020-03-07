@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5424127192626228060}
   - component: {fileID: 2236302487753874666}
   - component: {fileID: 8896073115429050167}
+  - component: {fileID: 5535789576555256230}
   - component: {fileID: 5131083395528240186}
   m_Layer: 8
   m_Name: NormalEnemyT2
@@ -102,6 +103,9 @@ MonoBehaviour:
   - StateID: Disable
     Behaviours:
     - {fileID: 8896073115429050167}
+  - StateID: Shoot
+    Behaviours:
+    - {fileID: 5535789576555256230}
 --- !u!114 &5424127192626228060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,8 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementDirection: {x: 0, y: -1}
   Speed: 5
-  TransitionToState: MoveBackwards
-  StateTime: 3
+  TransitionToState: Shoot
+  StateTime: 2
 --- !u!114 &2236302487753874666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6e38c654fc6e24295ad2a4d035544a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementDirection: {x: 0, y: 1}
+  MovementDirection: {x: 1, y: 1}
   Speed: 5
   TransitionToState: Disable
   StateTime: 3
@@ -146,6 +150,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99d8b75bb9d1cb46a5f8769c20d70cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5535789576555256230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147202219135615298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f028b304b456d5d48a441f497c7b25be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletType: 1
+  TransitionToState: MoveBackwards
+  BulletSpeed: 10
+  TransitionExitTime: 2
 --- !u!61 &5131083395528240186
 BoxCollider2D:
   m_ObjectHideFlags: 0

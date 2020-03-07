@@ -3,6 +3,13 @@ using System.Collections;
 
 namespace GameplayLogic
 {
+    public enum BulletType
+    {
+        Normal,
+        EnemyNormal,
+        EnemySlow
+    }
+
     public class Bullet : MonoBehaviour
     {
         public float Speed = 7;

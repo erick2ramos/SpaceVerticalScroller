@@ -81,6 +81,11 @@ namespace GameplayLogic
                 _health.Revive();
         }
 
+        public void RespawnAt(SpawnerHandler handler)
+        {
+            RespawnAt(handler.transform.position);
+        }
+
         private void Update()
         {
             EarlyAbilitiesUpdate();

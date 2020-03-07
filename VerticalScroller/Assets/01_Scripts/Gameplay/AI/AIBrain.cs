@@ -32,7 +32,9 @@ namespace GameplayLogic.AI
             {
                 state.Initialize();
             }
-            // TODO: Search target
+            // Target look up
+            GameObject go = GameObject.FindGameObjectWithTag("Player");
+            Target = go != null ? go.transform : null;
         }
 
         private void Update()

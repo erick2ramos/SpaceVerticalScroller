@@ -36,12 +36,21 @@ namespace GameplayLogic
 
             // Instantiate player ship
             AsyncOperationHandle<GameObject> handle = _playerReference.InstantiateAsync(_playerHolder, false);
+            handle.Completed += OnPlayerInstantiatedCallback;
 
             _waveSequence.Initialize();
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForEndOfFrame();
 
             GenericEvent.Trigger(GenericEventType.LevelStarted, null);
+        }
+
+        public void OnPlayerInstantiatedCallback(AsyncOperationHandle<GameObject> handle)
+        {
+            GameObject res = handle.Result;
+
+            Character player = res.GetComponent<Character>();
+            player.RespawnAt(_spawnerManager.GetSpawnerByID("Player"));
         }
 
         public void OnEvent(GenericEvent eventType)
