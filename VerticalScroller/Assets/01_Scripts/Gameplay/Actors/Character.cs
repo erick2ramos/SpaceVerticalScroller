@@ -26,17 +26,21 @@ namespace GameplayLogic
         private ConditionState _condition;
         private Health _health;
         private AIBrain _brain;
+        bool _init = false;
 
         private void Start()
         {
-            Initialize();
+            if(!_init)
+                Initialize();
         }
 
         public void Initialize()
         {
+            _init = true;
             _health = GetComponent<Health>();
             if(_health != null)
             {
+                _health.SetCharacter(this);
                 _health.Revive();
             }
             _condition = ConditionState.Normal;
@@ -60,11 +64,21 @@ namespace GameplayLogic
         // Respawn the player when it's dead at param point
         public void RespawnAt(Vector3 respawnPosition)
         {
+            if (!_init)
+                Initialize();
+            transform.position = respawnPosition;
+
+            if(CharacterType == CharacterType.NPC)
+            {
+                if(_brain != null)
+                {
+                    _brain.ResetBrain();
+                }
+            }
+
             // Reset health on respawn
             if(_health != null)
                 _health.Revive();
-
-            transform.position = respawnPosition;
         }
 
         private void Update()

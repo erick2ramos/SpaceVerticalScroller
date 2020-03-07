@@ -43,7 +43,7 @@ namespace GameplayLogic
             GameObject bulletObj = Magazine.Get();
 
             // Activate the bullet an shoot it
-            bulletObj.GetComponent<Bullet>().Fire(transform.position, Vector3.up);
+            bulletObj.GetComponent<Bullet>().Fire(transform.position, Vector3.up, gameObject);
         }
     }
 }

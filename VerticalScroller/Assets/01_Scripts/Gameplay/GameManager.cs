@@ -31,6 +31,18 @@ namespace GameplayLogic
         public void SetupLevel(int playerLives)
         {
             MaxLives = CurrentLives = playerLives;
+            ScoreUpdateEvent.Trigger(CurrentScore);
+        }
+
+        public void AddScore(int scoreToAdd)
+        {
+            CurrentScore += scoreToAdd;
+            ScoreUpdateEvent.Trigger(CurrentScore);
+        }
+
+        private void RespawnPlayer()
+        {
+
         }
 
         private void Update()
@@ -67,7 +79,17 @@ namespace GameplayLogic
 
                         // Broadcast the game over event
                         GenericEvent.Trigger(GenericEventType.GameOver, null);
+                    } else
+                    {
+                        var player = eventType.Originator.GetComponent<Character>();
+                        StartCoroutine(RespawnPlayer(player, 3));
                     }
+                    break;
+                case GenericEventType.EnemyDestroyed:
+                    GameObject enemyObj = eventType.Originator;
+                    // If an enemy was destroyed then it should have a health component
+                    Health enemyHealth = enemyObj.GetComponent<Health>();
+                    AddScore(enemyHealth.ScoreOnDeath);
                     break;
                 case GenericEventType.LevelStarted:
                     _isPlaying = true;
@@ -86,6 +108,20 @@ namespace GameplayLogic
         private void OnDisable()
         {
             this.EventStopListening<GenericEvent>();
+        }
+
+        IEnumerator RespawnPlayer(Character player, float time)
+        {
+            GenericEvent.Trigger(GenericEventType.RespawnStarted, player.gameObject);
+
+            yield return new WaitForSeconds(time);
+
+            player.RespawnAt(player.transform.position);
+            var health = player.GetComponent<Health>();
+            health.SetDamageable(true);
+            yield return health.SetDamageEnabledInTime(2);
+
+            GenericEvent.Trigger(GenericEventType.RespawnCompleted, player.gameObject);
         }
     }
 }

@@ -1,28 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BaseSystems.EventSystem;
 
-namespace BaseSystems.EventSystem
+namespace GameplayLogic.Events
 {
     public struct DamageTakenEvent
     {
         public int DamageAmount;
         public int PreviousHealth;
         public int CurrentHealth;
+        public Character DamagedActor;
 
-        public DamageTakenEvent(int damageAmount, int previousHealth, int currentHealth)
+        public DamageTakenEvent(int damageAmount, int previousHealth, int currentHealth, Character damagedActor)
         {
             DamageAmount = damageAmount;
             PreviousHealth = previousHealth;
             CurrentHealth = currentHealth;
+            DamagedActor = damagedActor;
         }
 
         static DamageTakenEvent e;
 
-        public static void Trigger(int damageAmount, int previousHealth, int currentHealth)
+        public static void Trigger(int damageAmount, int previousHealth, int currentHealth, Character damagedActor)
         {
             e.DamageAmount = damageAmount;
             e.PreviousHealth = previousHealth;
             e.CurrentHealth = currentHealth;
+            e.DamagedActor = damagedActor;
             EventManager.Trigger(e);
         }
     }

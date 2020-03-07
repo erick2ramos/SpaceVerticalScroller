@@ -10,16 +10,28 @@ namespace GameplayLogic
         public string Id;
         SpawnerManager _spawnerManager;
 
-        private void Awake()
+        private void OnEnable()
         {
             _spawnerManager = ManagerProvider.Get<SpawnerManager>();
             _spawnerManager.RegisterSpawner(this);
         }
 
+        private void OnDisable()
+        {
+            _spawnerManager.UnregisterSpawner(this);
+        }
+
         public void Spawn(GameObject objToSpawn)
         {
-            objToSpawn.transform.position = transform.position;
-            objToSpawn.SetActive(true);
+            Character character = objToSpawn.GetComponent<Character>();
+            if (character != null)
+            {
+                character.RespawnAt(transform.position);
+            } else
+            {
+                objToSpawn.transform.position = transform.position;
+                objToSpawn.SetActive(true);
+            }
         }
     }
 }

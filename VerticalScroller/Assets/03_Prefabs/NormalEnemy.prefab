@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 8147202219135615299}
   - component: {fileID: 8147202219135615297}
   - component: {fileID: 8147202219135615296}
+  - component: {fileID: 7011278821543805721}
   - component: {fileID: 5366616899393832229}
   - component: {fileID: 5424127192626228060}
   - component: {fileID: 2236302487753874666}
   - component: {fileID: 8896073115429050167}
-  m_Layer: 0
+  - component: {fileID: 5131083395528240186}
+  m_Layer: 8
   m_Name: NormalEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +64,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084affdf07980648b28c6a36fbc8a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreOnDeath: 100
   _maxHealth: 1
+--- !u!114 &7011278821543805721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147202219135615298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8a6c08f2bd1294e8e1a90bdba3243b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5366616899393832229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +145,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99d8b75bb9d1cb46a5f8769c20d70cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &5131083395528240186
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8147202219135615298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &8147202220429108555
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8147202220429108552}
   - component: {fileID: 8147202220429108553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

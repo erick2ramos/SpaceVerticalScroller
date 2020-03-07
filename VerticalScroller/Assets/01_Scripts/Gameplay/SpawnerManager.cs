@@ -33,6 +33,7 @@ namespace GameplayLogic
 
         public void CreateEnemyPools()
         {
+            _enemyPools.Clear();
             for (int i = 0; i < _enemyAssetMapper.Length; i++)
             {
                 var currentMap = _enemyAssetMapper[i];

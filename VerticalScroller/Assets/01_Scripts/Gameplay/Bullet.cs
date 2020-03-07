@@ -7,6 +7,8 @@ namespace GameplayLogic
     {
         public float Speed = 7;
         public float MaxLifeTime = 5;
+        [System.NonSerialized]
+        public GameObject Origin;
 
         // 5 seconds to make sure turn off the bullet
         float _lifeTimer = 5;
@@ -26,13 +28,28 @@ namespace GameplayLogic
             }
         }
 
-        public void Fire(Vector3 position, Vector3 direction)
+        public void Fire(Vector3 position, Vector3 direction, GameObject origin)
         {
+            Origin = origin;
             transform.position = position;
             _moveDirection = direction;
             _isPrimed = true;
             _lifeTimer = MaxLifeTime;
             gameObject.SetActive(true);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var other = collision.gameObject.GetComponent<ICollidable>();
+            if (other != null && Origin != null && Origin != collision.gameObject)
+            {
+                other.ProcessCollision(new CollisionInfo() 
+                { 
+                    AmountOfDamage = 1,
+                    Agressor = Origin.GetComponent<Character>()
+                });
+                gameObject.SetActive(false);
+            }
         }
     }
 }
