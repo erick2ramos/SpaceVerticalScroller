@@ -2,6 +2,7 @@
 using System.Collections;
 using BaseSystems.SceneHandling;
 using BaseSystems.Managers;
+using TMPro;
 
 namespace GameplayLogic
 {
@@ -15,6 +16,11 @@ namespace GameplayLogic
 
     public class GameOverSceneController : SceneController<GameOverSceneModel>
     {
+        [SerializeField]
+        TextMeshProUGUI _currentScoreText;
+        [SerializeField]
+        TextMeshProUGUI _highScoreText;
+
         bool _accept = false;
         bool _init = false;
 
@@ -22,8 +28,11 @@ namespace GameplayLogic
 
         public override IEnumerator Initialization()
         {
+            _currentScoreText.text = Model.CurrentScore.ToString("n0");
+            _highScoreText.text = Model.HighScore.ToString("n0");
+
             _transitionManager = ManagerProvider.Get<SceneTransitionManager>();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
             _init = true;
         }
 

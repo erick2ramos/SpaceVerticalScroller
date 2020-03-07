@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterRenderer: {fileID: 7226582330168165528}
   ScoreOnDeath: 0
-  _maxHealth: 1
+  _maxHealth: 3
 --- !u!114 &7226582330092598229
 MonoBehaviour:
   m_ObjectHideFlags: 0

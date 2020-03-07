@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitializationPriority: 2
+  GlobalConfig: {fileID: 11400000, guid: 88887e109edb6a04c86cf909e6dd763f, type: 2}
 --- !u!1 &1523302374
 GameObject:
   m_ObjectHideFlags: 0

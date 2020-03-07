@@ -58,11 +58,14 @@ namespace GameplayLogic
             switch (eventType.EventType)
             {
                 case GenericEventType.LevelStarted:
+                    // Activate the enemy spawn
                     _waveSequence.Activate();
                     break;
+                case GenericEventType.LevelCompleted:
+                case GenericEventType.LevelEnd:
                 case GenericEventType.GameOver:
+                    // Deactivate the enemy spawn
                     _waveSequence.Deactivate();
-                    // Show game over screen
                     break;
             }
         }

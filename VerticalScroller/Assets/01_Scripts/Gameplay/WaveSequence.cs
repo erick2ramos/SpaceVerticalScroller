@@ -122,6 +122,9 @@ namespace GameplayLogic
             // Reset timers for next wave
             _timer[0] = _timer[1] = 0;
             _currentWaveSpawn = 0;
+            
+            GenericEvent.Trigger(GenericEventType.WaveFinished, null);
+            
             // Cycle option
             if (_cycle)
             {

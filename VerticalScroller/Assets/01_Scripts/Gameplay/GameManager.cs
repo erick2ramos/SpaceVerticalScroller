@@ -15,12 +15,15 @@ namespace GameplayLogic
         public int HighScore { get; private set; }
         public bool IsPaused { get; private set; }
 
+        public GameGlobalConfig GlobalConfig;
+
         private float _previousTimeScale;
         private bool _isPlaying;
         private float _playthroughTime;
         private DataPersistanceManager _dataPersistance;
         private SceneTransitionManager _transitionManager;
         private SpawnerManager _spawnerManager;
+        private int _conditionCounter = 0;
 
         public override void Initialize()
         {
@@ -39,6 +42,7 @@ namespace GameplayLogic
         {
             MaxLives = CurrentLives = playerLives;
             ScoreUpdateEvent.Trigger(CurrentScore);
+            _conditionCounter = 0;
         }
 
         public void AddScore(int scoreToAdd)
@@ -92,12 +96,33 @@ namespace GameplayLogic
                     // If an enemy was destroyed then it should have a health component
                     Health enemyHealth = enemyObj.GetComponent<Health>();
                     AddScore(enemyHealth.ScoreOnDeath);
+                    if(GlobalConfig.WinCondition == WinCondition.Score)
+                    {
+                        _conditionCounter = CurrentScore;
+                        if(_conditionCounter >= GlobalConfig.AmountToWin)
+                        {
+                            GenericEvent.Trigger(GenericEventType.LevelCompleted, null);
+                        }
+                    }
+                    break;
+                case GenericEventType.WaveFinished:
+                    if(GlobalConfig.WinCondition == WinCondition.WaveSurvived)
+                    {
+                        _conditionCounter++;
+                        if (_conditionCounter >= GlobalConfig.AmountToWin)
+                            GenericEvent.Trigger(GenericEventType.LevelCompleted, null);
+                    }
                     break;
                 case GenericEventType.LevelStarted:
                     _isPlaying = true;
                     break;
                 case GenericEventType.LevelCompleted:
                 case GenericEventType.LevelEnd:
+                    // Store the high score in persistance
+                    _dataPersistance.PlayerData.CurrentHighScore = Mathf.Max(
+                        _dataPersistance.PlayerData.CurrentHighScore,
+                        CurrentScore);
+                    _dataPersistance.Save();
                     GameOverSceneModel model = new GameOverSceneModel()
                     {
                         CurrentScore = CurrentScore,
@@ -127,6 +152,7 @@ namespace GameplayLogic
 
                     // Show the game over screen screen
                     _transitionManager.AddScene(SceneIndex.GameOverScreen, gosmodel);
+                    _isPlaying = false;
                     break;
             }
         }

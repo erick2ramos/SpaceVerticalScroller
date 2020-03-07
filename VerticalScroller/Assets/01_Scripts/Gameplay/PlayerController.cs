@@ -6,6 +6,8 @@ namespace GameplayLogic
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
+        float DamageFeedbackTime = 2.5f;
+        [SerializeField]
         LayerMask _enemyCollisionMask;
         [SerializeField]
         LayerMask _bulletCollisionMask;
@@ -24,12 +26,12 @@ namespace GameplayLogic
             if((1 << collision.gameObject.layer & _enemyCollisionMask) > 0)
             {
                 // Player collided with an enemy
-                _health.Damage(CollisionHandler.COLLISION_DAMAGE_AMOUNT, invulnerableTime: 2.5f);
+                _health.Damage(CollisionHandler.COLLISION_DAMAGE_AMOUNT, DamageFeedbackTime, DamageFeedbackTime);
             }
 
             if((1 << collision.gameObject.layer & _bulletCollisionMask) > 0)
             {
-                _health.Damage(1, invulnerableTime: 2.5f);
+                _health.Damage(CollisionHandler.COLLISION_DAMAGE_AMOUNT, DamageFeedbackTime, DamageFeedbackTime);
             }
         }
     }

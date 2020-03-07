@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameplayLogic.AI;
+using BaseSystems.EventSystem;
 
 namespace GameplayLogic
 {
@@ -18,7 +19,7 @@ namespace GameplayLogic
         NPC
     }
 
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour, IEventListener<GenericEvent>
     {
         public CharacterType CharacterType;
 
@@ -124,6 +125,29 @@ namespace GameplayLogic
                     ability.LateProcessAbility();
                 }
             }
+        }
+
+        public void OnEvent(GenericEvent eventType)
+        {
+            switch (eventType.EventType)
+            {
+                case GenericEventType.GameOver:
+                case GenericEventType.LevelCompleted:
+                    enabled = false;
+                    if (_brain != null)
+                        _brain.IsActive = false;
+                    break;
+            }
+        }
+
+        private void OnEnable()
+        {
+            this.EventStartListening();
+        }
+
+        private void OnDisable()
+        {
+            this.EventStopListening();
         }
     }
 }

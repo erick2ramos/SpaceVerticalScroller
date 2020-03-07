@@ -243,6 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e5a179451c5504697e694b535e2ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentScoreText: {fileID: 354628457}
+  _highScoreText: {fileID: 735578371}
 --- !u!4 &167878375
 Transform:
   m_ObjectHideFlags: 0
@@ -1492,7 +1494,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Replay
+  m_text: '<size=30>Any key to</size>
+
+    Replay'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eab84309bb55bcd47a7e5ee58b417c87, type: 2}
   m_sharedMaterial: {fileID: 21017158439973832, guid: eab84309bb55bcd47a7e5ee58b417c87,
@@ -1538,7 +1542,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 8
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1562,12 +1566,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1752637523}
-    characterCount: 6
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
-    lineCount: 1
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
