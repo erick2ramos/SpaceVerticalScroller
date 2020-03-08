@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BaseSystems.DataPersistance
 {
-    public class DataPersistanceManager : Manager
+    public class DataPersistenceManager : Manager
     {
         public PlayerData PlayerData { get; private set; }
 

@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace BaseSystems.EventSystem
 {
+    /// <summary>
+    /// Used to broadcast a trigger event, only uses a string so it can be customized at will
+    /// </summary>
     public struct GameEvent
     {
         public string EventName;

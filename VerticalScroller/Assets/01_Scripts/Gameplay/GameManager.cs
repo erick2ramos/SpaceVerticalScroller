@@ -20,7 +20,7 @@ namespace GameplayLogic
         private float _previousTimeScale;
         private bool _isPlaying;
         private float _playthroughTime;
-        private DataPersistanceManager _dataPersistance;
+        private DataPersistenceManager _dataPersistance;
         private SceneTransitionManager _transitionManager;
         private SpawnerManager _spawnerManager;
         private int _conditionCounter = 0;
@@ -31,7 +31,7 @@ namespace GameplayLogic
             _previousTimeScale = Time.timeScale;
 
             // Request the providers required
-            _dataPersistance = ManagerProvider.Get<DataPersistanceManager>();
+            _dataPersistance = ManagerProvider.Get<DataPersistenceManager>();
             _transitionManager = ManagerProvider.Get<SceneTransitionManager>();
             _spawnerManager = ManagerProvider.Get<SpawnerManager>();
 

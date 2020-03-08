@@ -4,6 +4,10 @@ using BaseSystems.EventSystem;
 
 namespace GameplayLogic.Events
 {
+    
+    /// <summary>
+    /// Event triggered every time a character suffers damage to its health component
+    /// </summary>
     public struct DamageTakenEvent
     {
         public int DamageAmount;

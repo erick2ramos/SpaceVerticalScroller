@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace BaseSystems.EventSystem
 {
+    /// <summary>
+    /// Event triggered when the score is updated
+    /// </summary>
     public struct ScoreUpdateEvent
     {
         public int NewScore;

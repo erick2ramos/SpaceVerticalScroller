@@ -18,6 +18,9 @@ namespace BaseSystems.EventSystem
         WaveFinished
     }
 
+    /// <summary>
+    ///  Broadcast a predetermined event type
+    /// </summary>
     public struct GenericEvent
     {
         public GenericEventType EventType;
