@@ -2,6 +2,7 @@
 using System.Collections;
 using BaseSystems.EventSystem;
 using GameplayLogic.Events;
+using GameplayLogic.UI;
 
 namespace GameplayLogic
 {
@@ -9,18 +10,24 @@ namespace GameplayLogic
     {
         public bool IsInvulnerable { get; set; }
         public int CurrentHealth { get { return _currentHealth; } }
+        public int MaxHealth { get { return _maxHealth; } }
 
         public Renderer CharacterRenderer;
         public int ScoreOnDeath;
 
         [SerializeField]
         private int _maxHealth;
+        [SerializeField]
+        private HealthBarHandler _healthBarHandler;
+
         private int _currentHealth;
         Character _character;
 
         public void SetCharacter(Character character)
         {
             _character = character;
+            if(_healthBarHandler != null)
+                _healthBarHandler.Initialize(this);
         }
 
         public void Damage(int amount, float blinkTime = 0, float invulnerableTime = 0)
@@ -37,7 +44,7 @@ namespace GameplayLogic
 
             if (invulnerableTime > 0)
             {
-                SetInvulnerable(false);
+                SetInvulnerable(true);
                 StartCoroutine(SetDamageEnabledInTime(invulnerableTime));
             }
 
