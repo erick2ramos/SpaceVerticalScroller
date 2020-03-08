@@ -2,6 +2,7 @@
 using System.Collections;
 using BaseSystems.Generic;
 using BaseSystems.Managers;
+using BaseSystems.Feedback;
 
 namespace GameplayLogic
 {
@@ -9,8 +10,11 @@ namespace GameplayLogic
     {
         public float ShootCooldown = 0.25f;
         public BulletType BulletType;
-        float _cooldownTimer = 0;
 
+        [SerializeField]
+        Feedbacks _shootingFeedback;
+
+        float _cooldownTimer = 0;
         SpawnerManager _spawnerManager;
 
         public override void Initialize()
@@ -42,6 +46,7 @@ namespace GameplayLogic
         {
             // Get an inactive bullet from the pool and shoot it
             _spawnerManager.LendBullet(BulletType).Fire(transform.position, Vector3.up, gameObject);
+            _shootingFeedback.PlayAll();
         }
     }
 }

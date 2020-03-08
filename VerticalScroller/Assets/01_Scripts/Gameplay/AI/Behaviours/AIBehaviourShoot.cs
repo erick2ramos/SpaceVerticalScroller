@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using BaseSystems.Managers;
+using BaseSystems.Feedback;
 
 namespace GameplayLogic.AI
 {
@@ -10,6 +11,9 @@ namespace GameplayLogic.AI
         public string TransitionToState;
         public float BulletSpeed;
         public float TransitionExitTime;
+
+        [SerializeField]
+        Feedbacks _shootingFeedback;
 
         SpawnerManager _spawnerManager;
         float _timer;
@@ -34,6 +38,7 @@ namespace GameplayLogic.AI
             // Shoot a bullet at target
             bullet.Fire(transform.position, direction.normalized, gameObject);
             _timer = TransitionExitTime;
+            _shootingFeedback.PlayAll();
         }
 
         public override void ProcessBehaviour()

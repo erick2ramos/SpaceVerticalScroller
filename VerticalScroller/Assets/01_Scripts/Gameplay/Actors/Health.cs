@@ -3,6 +3,7 @@ using System.Collections;
 using BaseSystems.EventSystem;
 using GameplayLogic.Events;
 using GameplayLogic.UI;
+using BaseSystems.Feedback;
 
 namespace GameplayLogic
 {
@@ -19,6 +20,8 @@ namespace GameplayLogic
         private int _maxHealth;
         [SerializeField]
         private HealthBarHandler _healthBarHandler;
+        [SerializeField]
+        private Feedbacks _deathFeedback;
 
         private int _currentHealth;
         Character _character;
@@ -61,6 +64,7 @@ namespace GameplayLogic
 
         public void Kill()
         {
+            _deathFeedback?.PlayAll();
             _currentHealth = 0;
             SetInvulnerable(false);
             gameObject.SetActive(false);
