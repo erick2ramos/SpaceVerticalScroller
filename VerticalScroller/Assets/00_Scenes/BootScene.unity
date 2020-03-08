@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bacb15a5cb53f4291cf9ed3655c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitializationPriority: -10
+  InitializationPriority: -100
 --- !u!1 &286678830
 GameObject:
   m_ObjectHideFlags: 0

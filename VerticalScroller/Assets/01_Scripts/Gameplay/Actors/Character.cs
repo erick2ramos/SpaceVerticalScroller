@@ -22,6 +22,7 @@ namespace GameplayLogic
     public class Character : MonoBehaviour, IEventListener<GenericEvent>
     {
         public CharacterType CharacterType;
+        public Transform CharacterModel;
 
         private CharacterAbility[] _abilities;
         private ConditionState _condition;
@@ -136,6 +137,8 @@ namespace GameplayLogic
                     enabled = false;
                     if (_brain != null)
                         _brain.IsActive = false;
+                    if (_health != null)
+                        _health.SetInvulnerable(true);
                     break;
             }
         }

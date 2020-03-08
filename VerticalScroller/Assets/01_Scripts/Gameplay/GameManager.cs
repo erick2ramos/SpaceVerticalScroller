@@ -41,6 +41,7 @@ namespace GameplayLogic
         public void SetupLevel(int playerLives)
         {
             MaxLives = CurrentLives = playerLives;
+            CurrentScore = 0;
             ScoreUpdateEvent.Trigger(CurrentScore);
             _conditionCounter = 0;
         }
@@ -48,6 +49,7 @@ namespace GameplayLogic
         public void AddScore(int scoreToAdd)
         {
             CurrentScore += scoreToAdd;
+            HighScore = Mathf.Max(CurrentScore, HighScore);
             ScoreUpdateEvent.Trigger(CurrentScore);
         }
 

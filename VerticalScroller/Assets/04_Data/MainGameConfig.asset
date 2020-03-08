@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c719d2634e92844d8b3519823f68655, type: 3}
   m_Name: MainGameConfig
   m_EditorClassIdentifier: 
-  WinCondition: 0
-  AmountToWin: 1000
+  WinCondition: 1
+  AmountToWin: 2000

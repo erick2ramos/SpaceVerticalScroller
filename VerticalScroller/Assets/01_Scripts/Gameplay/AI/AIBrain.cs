@@ -16,8 +16,8 @@ namespace GameplayLogic.AI
         // Simple State Machine for customizable enemy behaviours
         [SerializeField]
         List<AIState> _states;
-        int _currentBehaviour = 0;
         AIState _currentState;
+        public string CurrentState;
 
         private void Awake()
         {
@@ -57,8 +57,9 @@ namespace GameplayLogic.AI
                 var newState = _states.Find((x) => x.StateID == stateID);
                 _currentState.OnExit();
                 _currentState = newState;
+                CurrentState = _currentState.StateID;
 
-                if(_currentState != null)
+                if (_currentState != null)
                 {
                     _currentState.OnEnter();
                 }

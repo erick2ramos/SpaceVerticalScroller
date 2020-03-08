@@ -11,7 +11,7 @@ namespace GameplayLogic.AI
         public float StateTime = 3f;
 
         float _timer;
-
+        
         public override void Initialize()
         {
             base.Initialize();
