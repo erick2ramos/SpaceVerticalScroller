@@ -8,6 +8,10 @@ using System.Collections.Generic;
 
 namespace GameplayLogic.UI
 {
+
+    /// <summary>
+    /// Updates the score, highscore and player continues left
+    /// </summary>
     public class GameHUD : MonoBehaviour, IEventListener<GenericEvent>, IEventListener<ScoreUpdateEvent>
     {
         [SerializeField]
@@ -31,6 +35,7 @@ namespace GameplayLogic.UI
             switch (eventType.EventType)
             {
                 case GenericEventType.LevelStarted:
+                    // Set up and instantiate copies of the continue image
                     _continues = new Image[_gameManager.MaxLives];
                     _continues[0] = IconToCopy.GetComponent<Image>();
                     for(int i = 1; i < _gameManager.MaxLives; i++)
@@ -42,7 +47,7 @@ namespace GameplayLogic.UI
                     // show the amount of continues left
                     for(var i = 0; i < _continues.Length; i++)
                     {
-                        _continues[i].gameObject.SetActive(i < _gameManager.CurrentLives);
+                        _continues[i].gameObject.SetActive(i < _gameManager.CurrentLifes);
                     }
                     break;
             }

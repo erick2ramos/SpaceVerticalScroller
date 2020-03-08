@@ -6,6 +6,9 @@ using UnityEngine.Audio;
 
 namespace BaseSystems.Audio
 {
+    /// <summary>
+    /// Service listening for any audio event to play
+    /// </summary>
     public class AudioManager : Manager, IEventListener<AudioSFXEvent>
     {
         [SerializeField]

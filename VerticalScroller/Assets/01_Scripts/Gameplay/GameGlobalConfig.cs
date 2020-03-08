@@ -10,6 +10,9 @@ namespace GameplayLogic
         WaveSurvived = 2,
     }
 
+    /// <summary>
+    /// Win condition config
+    /// </summary>
     [CreateAssetMenu(fileName = "Game Config", menuName = "Game Config")]
     public class GameGlobalConfig : ScriptableObject
     {

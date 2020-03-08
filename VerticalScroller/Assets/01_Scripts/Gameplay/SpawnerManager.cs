@@ -125,6 +125,11 @@ namespace GameplayLogic
             }
         }
 
+        /// <summary>
+        /// Returns a bullet of BulletType from the matching DynamicObjectPool
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Bullet LendBullet(BulletType type)
         {
             DynamicObjectPool pool;

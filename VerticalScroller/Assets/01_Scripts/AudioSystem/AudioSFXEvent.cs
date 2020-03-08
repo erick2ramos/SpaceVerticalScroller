@@ -4,6 +4,9 @@ using UnityEngine.Audio;
 
 namespace BaseSystems.EventSystem
 {
+    /// <summary>
+    /// Event trigger to reproduce a SFX through (optionally) a mixer group
+    /// </summary>
     public struct AudioSFXEvent
     {
         public AudioClip Clip;

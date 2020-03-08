@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace BaseSystems.Feedback
 {
+    /// <summary>
+    /// Allows to easily configure a sequence of feedbacks and be played/stoped
+    /// on demand
+    /// </summary>
     public class Feedbacks : MonoBehaviour
     {
         public bool AutoInitialize = false;

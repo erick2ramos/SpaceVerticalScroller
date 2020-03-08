@@ -22,7 +22,7 @@ namespace GameplayLogic
         Vector3 _moveDirection;
         bool _isPrimed = false;
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isPrimed)
             {

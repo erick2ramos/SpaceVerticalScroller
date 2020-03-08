@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace GameplayLogic.AI
 {
+    /// <summary>
+    /// Process the AI behaviours configured in the character
+    /// </summary>
     public class AIBrain : MonoBehaviour
     {
         [System.NonSerialized]
@@ -12,8 +15,8 @@ namespace GameplayLogic.AI
         public Transform Target;
         public bool IsActive = false;
 
-        // Simple AI for enemies
-        // Simple State Machine for customizable enemy behaviours
+        // AI for enemies
+        // State Machine for customizable enemy behaviours
         [SerializeField]
         List<AIState> _states;
         AIState _currentState;

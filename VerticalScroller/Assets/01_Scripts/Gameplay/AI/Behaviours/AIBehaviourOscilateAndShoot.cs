@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace GameplayLogic.AI
 {
+
+    /// <summary>
+    /// AI does an oscilating circular movement and after a while transitions a target state
+    /// </summary>
     public class AIBehaviourOscilateAndShoot : AIBehaviour
     {
         public Vector2 ShootTimeInterval;

@@ -7,9 +7,13 @@ using BaseSystems.SceneHandling;
 
 namespace GameplayLogic
 {
+    /// <summary>
+    /// Handles the flow of the game, checks win and lose conditions,
+    /// keeps track of score and remaining lifes
+    /// </summary>
     public class GameManager : Manager, IEventListener<GenericEvent>
     {
-        public int CurrentLives { get; private set; }
+        public int CurrentLifes { get; private set; }
         public int MaxLives { get; private set; }
         public int CurrentScore { get; private set; }
         public int HighScore { get; private set; }
@@ -38,9 +42,13 @@ namespace GameplayLogic
             HighScore = _dataPersistance.PlayerData.CurrentHighScore;
         }
 
+        /// <summary>
+        /// Reset values for a fresh playthrough
+        /// </summary>
+        /// <param name="playerLives"></param>
         public void SetupLevel(int playerLives)
         {
-            MaxLives = CurrentLives = playerLives;
+            MaxLives = CurrentLifes = playerLives;
             CurrentScore = 0;
             ScoreUpdateEvent.Trigger(CurrentScore);
             _conditionCounter = 0;
@@ -75,8 +83,8 @@ namespace GameplayLogic
                 // If player died is triggered, lower the lives for current playthrough 
                 // and check if it's game over
                 case GenericEventType.PlayerDied:
-                    CurrentLives--;
-                    if (CurrentLives <= 0)
+                    CurrentLifes--;
+                    if (CurrentLifes <= 0)
                     {
                         _isPlaying = false;
                         // Store the high score in persistance
@@ -175,6 +183,7 @@ namespace GameplayLogic
 
             yield return new WaitForSeconds(time);
 
+            // Respawn the player with "cinematic" (not really) feel
             player.RespawnAt(_spawnerManager.GetSpawnerByID("Player"));
             var health = player.GetComponent<Health>();
             health.SetInvulnerable(true);

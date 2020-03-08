@@ -20,6 +20,11 @@ namespace BaseSystems.EventSystem
             _listeners = new Dictionary<Type, List<IEventListenerBase>>();
         }
 
+        /// <summary>
+        /// Register a listener to a specific "EventType" event
+        /// </summary>
+        /// <typeparam name="EventType"></typeparam>
+        /// <param name="listener"></param>
         public static void AddListener<EventType>(IEventListener<EventType> listener) where EventType : struct
         {
             Type type = typeof(EventType);
@@ -35,6 +40,11 @@ namespace BaseSystems.EventSystem
             }
         }
 
+        /// <summary>
+        /// Unsubscribe listener from event
+        /// </summary>
+        /// <typeparam name="EventType"></typeparam>
+        /// <param name="listener"></param>
         public static void RemoveListener<EventType>(IEventListener<EventType> listener) where EventType : struct
         {
             Type type = typeof(EventType);
@@ -78,6 +88,11 @@ namespace BaseSystems.EventSystem
             return exists;
         }
 
+        /// <summary>
+        /// Broadcast an event through al of its listeners
+        /// </summary>
+        /// <typeparam name="EventType"></typeparam>
+        /// <param name="newEvent"></param>
         public static void Trigger<EventType>(EventType newEvent) where EventType : struct 
         {
             if (!_listeners.TryGetValue(typeof(EventType), out List<IEventListenerBase> listeners))
@@ -90,7 +105,7 @@ namespace BaseSystems.EventSystem
         }
     }
 
-    // Helpers for easy listener registration
+    // Helpers for easy listener registration and deregistration
     public static class EventRegister
     {
         public static void EventStartListening<EventType>(this IEventListener<EventType> caller) where EventType : struct

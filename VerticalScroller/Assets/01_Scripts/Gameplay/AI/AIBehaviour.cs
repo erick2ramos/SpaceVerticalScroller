@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace GameplayLogic.AI
 {
+
+    /// <summary>
+    /// Custom behaviour for an npc character
+    /// </summary>
     [RequireComponent(typeof(AIBrain))]
     public abstract class AIBehaviour : MonoBehaviour
     {

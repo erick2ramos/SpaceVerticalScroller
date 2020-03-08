@@ -15,6 +15,9 @@ namespace GameplayLogic
         public float WaveDelay;
     }
 
+    /// <summary>
+    /// In charge of the enemy spawning given by the current wave configuration
+    /// </summary>
     public class WaveSequence : MonoBehaviour
     {
         enum WaveSequenceState

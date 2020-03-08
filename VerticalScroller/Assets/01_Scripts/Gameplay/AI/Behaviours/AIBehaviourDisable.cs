@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace GameplayLogic.AI
 {
+    /// <summary>
+    /// Disables the game object, useful for the DynamicObjectPool
+    /// </summary>
     public class AIBehaviourDisable : AIBehaviour
     {
         public override void ProcessBehaviour()

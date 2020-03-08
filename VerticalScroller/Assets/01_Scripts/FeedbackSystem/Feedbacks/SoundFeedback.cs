@@ -5,6 +5,10 @@ using UnityEngine.Audio;
 using BaseSystems.EventSystem;
 
 namespace BaseSystems.Feedback {
+
+    /// <summary>
+    /// Triggers an Audio event
+    /// </summary>
     public class SoundFeedback : Feedback
     {
         public AudioClip Clip;

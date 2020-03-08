@@ -5,6 +5,11 @@ using GameplayLogic.Events;
 
 namespace GameplayLogic.UI
 {
+
+    /// <summary>
+    /// Listens for the player receiving damage to adjust the slider fill showing the current
+    /// player health, resets when the player completed respawning
+    /// </summary>
     public class HealthBarHandler : MonoBehaviour, IEventListener<DamageTakenEvent>, IEventListener<GenericEvent>
     {
         [SerializeField]

@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace GameplayLogic
 {
+    /// <summary>
+    /// Handles collisions dealing damage to the health of the owner gameobject
+    /// </summary>
     [RequireComponent(typeof(Character), typeof(Health))]
     public class CollisionHandler : MonoBehaviour, ICollidable
     {

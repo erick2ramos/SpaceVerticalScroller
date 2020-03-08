@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace BaseSystems.Generic
 {
+    /// <summary>
+    /// Pre instantiates a minimal amount of game objects to be reused
+    /// </summary>
     [System.Serializable]
     public class DynamicObjectPool
     {
@@ -16,6 +19,7 @@ namespace BaseSystems.Generic
         public void Create()
         {
             _pool = new List<GameObject>();
+            // Intances holder
             _parent = new GameObject($"__Pool__{GameObjectPrefab.name}");
             for (int i = 0; i < MinAmount; i++)
             {
@@ -30,6 +34,11 @@ namespace BaseSystems.Generic
             return go;
         }
 
+        /// <summary>
+        /// Returns the first inactive object in the pool if the is
+        /// none then create a new one an add it to the pool
+        /// </summary>
+        /// <returns></returns>
         public GameObject Get()
         {
             int startingIndex = currentIndex;

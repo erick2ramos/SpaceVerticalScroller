@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace GameplayLogic
 {
+    /// <summary>
+    /// Handle player collisions
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]

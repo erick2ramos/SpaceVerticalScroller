@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace GameplayLogic.AI
 {
+    /// <summary>
+    /// The AI focus on the target for LookupTime and then launches itself
+    /// in last calculated direction
+    /// </summary>
     public class AIBehaviourKamikaze : AIBehaviour
     {
         public string TransitionToState;

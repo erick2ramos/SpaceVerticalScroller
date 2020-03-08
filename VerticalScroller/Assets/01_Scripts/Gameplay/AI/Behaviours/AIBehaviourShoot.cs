@@ -5,6 +5,10 @@ using BaseSystems.Feedback;
 
 namespace GameplayLogic.AI
 {
+
+    /// <summary>
+    /// AI shoots a configurable speed bullet at the target
+    /// </summary>
     public class AIBehaviourShoot : AIBehaviour
     {
         public BulletType BulletType;

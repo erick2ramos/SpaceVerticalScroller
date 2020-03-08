@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace GameplayLogic.AI
 {
+
+    /// <summary>
+    /// Simple straigh movement for a configurable time and velocity
+    /// </summary>
     public class AITimedMoveStraight : AIBehaviour
     {
         public Vector2 MovementDirection;
