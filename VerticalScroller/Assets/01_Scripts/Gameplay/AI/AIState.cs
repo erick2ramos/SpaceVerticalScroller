@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace GameplayLogic.AI
 {
+
+    /// <summary>
+    /// State in charge of processing all the registered behaviours
+    /// </summary>
     [System.Serializable]
     public class AIState
     {
