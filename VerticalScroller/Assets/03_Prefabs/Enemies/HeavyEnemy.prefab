@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterRenderer: {fileID: 0}
   ScoreOnDeath: 500
-  _maxHealth: 5
+  _maxHealth: 8
   _healthBarHandler: {fileID: 0}
   _deathFeedback: {fileID: 3270576679240190393}
 --- !u!114 &7011278821543805721
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64405e1b6444bd949a257c299ec1326c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootTimeInterval: {x: 1.5, y: 2.15}
+  ShootTimeInterval: {x: 1, y: 2.15}
   TransitionToState: Shoot
 --- !u!114 &8339547225859759567
 MonoBehaviour:

@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterRenderer: {fileID: 0}
   ScoreOnDeath: 100
-  _maxHealth: 1
+  _maxHealth: 3
   _healthBarHandler: {fileID: 0}
   _deathFeedback: {fileID: 1061922871576090801}
 --- !u!114 &7011278821543805721
@@ -216,7 +216,7 @@ MonoBehaviour:
   MovementDirection: {x: 0, y: -1}
   Speed: 5
   TransitionToState: Kamikaze
-  StateTime: 2
+  StateTime: 1.5
 --- !u!114 &2221146156617294353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,9 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TransitionToState: Disable
-  LookupTime: 2
+  LookupTime: 1.5
   LaunchTime: 3.5
-  LaunchSpeed: 12
+  LaunchSpeed: 20
 --- !u!114 &8896073115429050167
 MonoBehaviour:
   m_ObjectHideFlags: 0

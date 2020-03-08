@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterRenderer: {fileID: 8147202220429108553}
   ScoreOnDeath: 100
-  _maxHealth: 1
+  _maxHealth: 3
   _healthBarHandler: {fileID: 0}
   _deathFeedback: {fileID: 4347854202208256553}
 --- !u!114 &7011278821543805721
